@@ -4,7 +4,7 @@ $current_time = date("Y-m-d H:i:s");
 $current_date = date("Y-m-d");
 
 // connection and query
-$connection = mysqli_connect("sql204.epizy.com", "epiz_33712473", "jXeUQSCKZ81L3UC", "epiz_33712473_roam");
+$connection = mysqli_connect("localhost", "root", "", "roam");
 
 function query($query)
 {
