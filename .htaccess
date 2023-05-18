@@ -1,0 +1,13 @@
+php_value display_errors On
+php_value mbstring.http_input auto
+php_value date.timezone Asia/Jakarta
+RewriteEngine On
+ErrorDocument 403 https://roam.rf.gd/error_pages/403.html
+ErrorDocument 404 https://roam.rf.gd/error_pages/404.html
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?roam\.rf.gd [NC] 
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?roam\.rf.gd.*$ [NC] 
+RewriteRule "(functions|get_data|delete_account|delete_discount_data|check_plate|delete_car_data|insert_mobil|delete_payment_data|get_total|delete_lease_data|admin_account_delete|user_account_delete)\.php$" - [F]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
